@@ -1,5 +1,6 @@
 .app-header {
-	background-color: #111D4A;
+	background-color: #111d4a;
+	color: white;
 	padding: 1.2rem;
 	font-size: 1.4rem;
 	text-align: center;
@@ -7,4 +8,5 @@
 	top: 0;
 	left: 0;
 	right: 0;
+	pointer-events: none;
 }
