@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import "./TasksList.css";
 import Card from "./Card";
 import ToolBar from "./Toolbar";
-import { useAppSelector } from "../hooks/useAppSelector";
+import { useAppSelector } from "../../hooks/useAppSelector";
 import TaskCreateDialog from "./TaskCreateDialog";
 
 const TasksList = () => {
 	const tasks = useAppSelector((state) => state.tasks.tasks);
-	const [dialogOpen, setDialogOpen] = useState(true);
+	const [dialogOpen, setDialogOpen] = useState(false);
 	console.log(tasks);
 	return (
 		<main>
@@ -17,8 +17,9 @@ const TasksList = () => {
 				}}
 			/>
 			<div className="tasks-list">
-				{tasks.map(({ title, description, dueDate }, index) => (
+				{tasks.map(({ id, title, description, dueDate }, index) => (
 					<Card
+						id={id}
 						key={index}
 						title={title}
 						description={description}

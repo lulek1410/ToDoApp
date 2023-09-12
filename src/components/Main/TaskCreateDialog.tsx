@@ -3,8 +3,8 @@ import React, { useEffect, useRef } from "react";
 
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
-import { useAppDispatch } from "../hooks/useAppDispatch";
-import { addTask } from "../store/reducers/tasksSlice";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { addTask } from "../../store/reducers/tasksSlice";
 
 interface TaskCreateDialogProps {
 	isOpen: boolean;

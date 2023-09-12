@@ -1,4 +1,3 @@
-import { useAppDispatch } from "../hooks/useAppDispatch";
 import "./Toolbar.css";
 import React from "react";
 
