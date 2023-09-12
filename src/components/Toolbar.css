@@ -14,7 +14,7 @@
 	width: var(--size);
 	height: var(--size);
 	font-size: 1.5rem;
-	background-color: #fde74c;
+	background-color: #cc5803;
 	border: none;
 	border-radius: 50%;
 	box-shadow: 4px 4px var(--shadow-color);
@@ -22,5 +22,6 @@
 }
 
 .add-task-btn:active {
-	box-shadow: inset 2px 2px var(--shadow-color);
+	background-color: hsl(25, 97%, 38%);
+	box-shadow: inset 4px 4px var(--shadow-color);
 }
