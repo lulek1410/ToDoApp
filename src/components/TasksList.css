@@ -1,0 +1,14 @@
+main {
+	background-color: #F7CACD;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	place-items: center;
+}
+
+.tasks-list {
+	width: 50%;
+	display: grid;
+	grid-auto-rows: 150px;
+	row-gap: 30px;
+}
