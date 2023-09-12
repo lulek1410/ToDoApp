@@ -1,25 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import "./TasksList.css";
 import Card from "./Card";
 import ToolBar from "./Toolbar";
 import { useAppSelector } from "../hooks/useAppSelector";
+import TaskCreateDialog from "./TaskCreateDialog";
 
 const TasksList = () => {
 	const tasks = useAppSelector((state) => state.tasks.tasks);
+	const [dialogOpen, setDialogOpen] = useState(true);
 	console.log(tasks);
 	return (
 		<main>
-			<ToolBar />
+			<ToolBar
+				openDialog={() => {
+					setDialogOpen(true);
+				}}
+			/>
 			<div className="tasks-list">
-				{tasks.map(({ name, description, dueDate }, index) => (
+				{tasks.map(({ title, description, dueDate }, index) => (
 					<Card
 						key={index}
-						name={name}
+						title={title}
 						description={description}
 						dueDate={dueDate}
 					/>
 				))}
 			</div>
+			<TaskCreateDialog
+				isOpen={dialogOpen}
+				close={() => {
+					setDialogOpen(false);
+				}}
+			/>
 		</main>
 	);
 };

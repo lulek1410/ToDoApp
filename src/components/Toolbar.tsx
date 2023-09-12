@@ -2,11 +2,17 @@ import { useAppDispatch } from "../hooks/useAppDispatch";
 import "./Toolbar.css";
 import React from "react";
 
-const Toolbar = () => {
+interface TooBarProps {
+	openDialog: () => void;
+}
+
+const Toolbar = ({ openDialog }: TooBarProps) => {
 	return (
 		<div className="toolbar">
 			<h1>Tasks</h1>
-			<button className="add-task-btn">+</button>
+			<button className="btn active-btn add-task-btn" onClick={openDialog}>
+				+
+			</button>
 		</div>
 	);
 };

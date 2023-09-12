@@ -1,8 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { RootState } from "..";
 
 interface Task {
-	name: string;
+	title: string;
 	description: string;
 	dueDate: string;
 }
@@ -14,19 +13,19 @@ interface TasksState {
 const initialState: TasksState = {
 	tasks: [
 		{
-			name: "Task-1",
+			title: "Task-1",
 			description: "description",
-			dueDate: "30.09.2024",
+			dueDate: "2024-09-30",
 		},
 		{
-			name: "Task-2",
+			title: "Task-2",
 			description: "description 2",
-			dueDate: "30.12.2023",
+			dueDate: "2023-12-30",
 		},
 		{
-			name: "Task-3",
+			title: "Task-3",
 			description: "description 3",
-			dueDate: "12.10.2023",
+			dueDate: "2023-10-12",
 		},
 	],
 };

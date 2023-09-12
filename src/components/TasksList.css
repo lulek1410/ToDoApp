@@ -1,9 +1,10 @@
 main {
-	background-color: #F7CACD;
+	background-color: #f7cacd;
 	flex: 1;
 	display: flex;
 	flex-direction: column;
 	place-items: center;
+	position: relative;
 }
 
 .tasks-list {
