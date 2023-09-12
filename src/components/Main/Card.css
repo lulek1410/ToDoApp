@@ -1,10 +1,11 @@
 .card {
 	width: 100%;
 	height: 100%;
-	padding: 1rem;
+	padding: 1.5rem 1rem 1rem 1rem;
 	background-color: #5bc0eb;
 	border-radius: 10px;
 	box-shadow: 10px 10px var(--shadow-color);
+	position: relative;
 }
 
 .card-title {
@@ -13,4 +14,15 @@
 	justify-content: space-between;
 	border-bottom: 1px rgb(50, 50, 50) solid;
 	margin-bottom: 0.5rem;
+}
+
+.icon-btn {
+	font-size: 1rem;
+	color: black;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	position: absolute;
+	right: 10px;
+	top: 5px;
 }
