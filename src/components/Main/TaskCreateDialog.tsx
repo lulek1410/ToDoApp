@@ -1,10 +1,11 @@
 import "./TaskCreateDialog.css";
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { addTask } from "../../store/reducers/tasksSlice";
+import { useAppSelector } from "../../hooks/useAppSelector";
 
 interface TaskCreateDialogProps {
 	isOpen: boolean;
@@ -19,7 +20,13 @@ const formatedDate =
 	"-" +
 	("0" + today.getDate()).slice(-2);
 
-const initialValues = {
+interface InitialValues {
+	title: string;
+	description: string;
+	dueDate: string;
+}
+
+const initialValues: InitialValues = {
 	title: "",
 	description: "",
 	dueDate: formatedDate,
@@ -33,14 +40,15 @@ const validationSchema = Yup.object().shape({
 
 const TaskCreateDialog = ({ isOpen, close }: TaskCreateDialogProps) => {
 	const dispatch = useAppDispatch();
+	const tasksLength = useAppSelector((state) => state.tasks.length);
 	const formRef = useRef<HTMLDivElement | null>(null);
 
 	useEffect(() => {
-		const handleClickOutsideOfForm = (event) => {
+		const handleClickOutsideOfForm = (event: MouseEvent) => {
 			if (
 				isOpen &&
 				formRef.current &&
-				!formRef.current.contains(event.target)
+				!formRef.current.contains(event.target as Node)
 			) {
 				close();
 			}
@@ -52,9 +60,9 @@ const TaskCreateDialog = ({ isOpen, close }: TaskCreateDialogProps) => {
 		};
 	}, [close, isOpen]);
 
-	const handleSubmit = (values) => {
-		console.log(values);
-		dispatch(addTask({ ...values }));
+	const handleSubmit = (values: InitialValues) => {
+		console.log(values, tasksLength + 1);
+		dispatch(addTask({ ...values, id: tasksLength + 1 }));
 		close();
 	};
 
