@@ -1,18 +1,22 @@
-import { useState } from "react";
 import "./TasksList.css";
 import Card from "./Card";
 import ToolBar from "./Toolbar";
 import { useAppSelector } from "../../hooks/useAppSelector";
 import TaskCreateDialog from "./TaskCreateDialog";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { openDialog } from "../../store/reducers/dialogSlice";
+import { AnimatePresence, motion } from "framer-motion";
 
 const TasksList = () => {
 	const tasks = useAppSelector((state) => state.tasks);
-	const [dialogOpen, setDialogOpen] = useState(false);
+	const isOpen = useAppSelector((state) => state.dialog.isOpen);
+	const dispatch = useAppDispatch();
+
 	return (
 		<main>
 			<ToolBar
 				openDialog={() => {
-					setDialogOpen(true);
+					dispatch(openDialog());
 				}}
 			/>
 			<div className="tasks-list">
@@ -26,12 +30,7 @@ const TasksList = () => {
 					/>
 				))}
 			</div>
-			<TaskCreateDialog
-				isOpen={dialogOpen}
-				close={() => {
-					setDialogOpen(false);
-				}}
-			/>
+			<AnimatePresence>{isOpen && <TaskCreateDialog />}</AnimatePresence>
 		</main>
 	);
 };

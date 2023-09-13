@@ -1,9 +1,9 @@
 import "./Card.css";
-import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { deleteTask } from "../../store/reducers/tasksSlice";
+import { openDialog } from "../../store/reducers/dialogSlice";
 
 interface CardProps {
 	id: number;
@@ -12,11 +12,20 @@ interface CardProps {
 	dueDate: string;
 }
 
-const Card = ({ id, title, description, dueDate }: CardProps) => {
+const Card = (props: CardProps) => {
+	const { id, title, description, dueDate } = props;
 	const dispatch = useAppDispatch();
 
 	return (
 		<div className="card">
+			<button
+				className="icon-btn"
+				onClick={() => {
+					dispatch(openDialog(props));
+				}}
+			>
+				<FontAwesomeIcon icon={faPenToSquare} />
+			</button>
 			<button
 				className="icon-btn"
 				onClick={() => {

@@ -1,10 +1,10 @@
 .dialog {
 	position: absolute;
 	background-color: rgba(255, 255, 255, 0.295);
-	backdrop-filter: blur(5px);
 	inset: 0;
 	display: grid;
 	place-items: center;
+	transition: opacity 250ms ease-in-out;
 }
 
 .form {

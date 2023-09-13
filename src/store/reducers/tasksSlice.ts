@@ -18,7 +18,7 @@ const initialState: Array<Task> = [
 		id: 3,
 		title: "Task-3",
 		description: "description 3",
-		dueDate: "2023-10-12",
+		dueDate: "2023-08-12",
 	},
 ];
 
@@ -26,12 +26,15 @@ export const tasksSlice = createSlice({
 	name: "tasks",
 	initialState,
 	reducers: {
-		addTask: (state, action: PayloadAction<Task>) => {
-			state.push(action.payload);
+		addTask: (state, { payload }: PayloadAction<Task>) => {
+			state.push(payload);
 		},
-		editTask: (state) => {},
-		deleteTask: (state, action: PayloadAction<number>) => {
-			const index = state.findIndex((task) => task.id === action.payload);
+		editTask: (state, { payload }: PayloadAction<Task>) => {
+			const index = state.findIndex((task) => task.id === payload.id);
+			state[index] = payload;
+		},
+		deleteTask: (state, { payload }: PayloadAction<number>) => {
+			const index = state.findIndex((task) => task.id === payload);
 			state.splice(index, 1);
 		},
 	},
