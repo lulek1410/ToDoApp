@@ -109,7 +109,7 @@ const TaskCreateDialog = ({ isOpen, close }: TaskCreateDialogProps) => {
 										type="submit"
 										disabled={!isValid || !dirty}
 									>
-										Submit
+										Save
 									</button>
 								</Form>
 							)}
