@@ -14,18 +14,18 @@ export const dialogSlice = createSlice({
 	name: "dialog",
 	initialState,
 	reducers: {
-		open: (state, action?: PayloadAction<Task>) => {
+		openDialog: (state, action?: PayloadAction<Task>) => {
 			state.isOpen = true;
 			if (action) {
 				state.dialogData = action.payload;
 			}
 		},
-		close: (state) => {
+		closeDialog: (state) => {
 			state.isOpen = false;
 			state.dialogData = undefined;
 		},
 	},
 });
 
-export const { open, close } = dialogSlice.actions;
+export const { openDialog, closeDialog } = dialogSlice.actions;
 export default dialogSlice.reducer;
