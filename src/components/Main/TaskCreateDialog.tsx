@@ -89,7 +89,12 @@ const TaskCreateDialog = () => {
 								{errors.title && touched.title ? errors.title : null}
 							</div>
 							<label htmlFor="description">Description:</label>
-							<Field id="description" name="description"></Field>
+							<Field
+								id="description"
+								name="description"
+								component="textarea"
+								rows="6"
+							></Field>
 							<div className="error">
 								{errors.description && touched.description
 									? errors.description
