@@ -61,7 +61,6 @@ const TaskCreateDialog = ({ isOpen, close }: TaskCreateDialogProps) => {
 	}, [close, isOpen]);
 
 	const handleSubmit = (values: InitialValues) => {
-		console.log(values, tasksLength + 1);
 		dispatch(addTask({ ...values, id: tasksLength + 1 }));
 		close();
 	};

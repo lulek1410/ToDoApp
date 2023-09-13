@@ -8,7 +8,6 @@ import TaskCreateDialog from "./TaskCreateDialog";
 const TasksList = () => {
 	const tasks = useAppSelector((state) => state.tasks);
 	const [dialogOpen, setDialogOpen] = useState(false);
-	console.log(tasks);
 	return (
 		<main>
 			<ToolBar
