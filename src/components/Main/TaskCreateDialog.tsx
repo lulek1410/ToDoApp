@@ -8,14 +8,7 @@ import { addTask, editTask } from "../../store/reducers/tasksSlice";
 import { useAppSelector } from "../../hooks/useAppSelector";
 import { closeDialog } from "../../store/reducers/dialogSlice";
 import { motion } from "framer-motion";
-
-const today = new Date();
-const formatedDate =
-	today.getFullYear() +
-	"-" +
-	("0" + (today.getMonth() + 1)).slice(-2) +
-	"-" +
-	("0" + today.getDate()).slice(-2);
+import { getCurrentDate } from "./utils/getCurrentDate";
 
 interface InitialValues {
 	title: string;
@@ -34,17 +27,17 @@ const TaskCreateDialog = () => {
 	const dialogData = useAppSelector((state) => state.dialog.dialogData);
 	const tasksLength = useAppSelector((state) => state.tasks.length);
 	const formRef = useRef<HTMLDivElement | null>(null);
-
+	const today = getCurrentDate();
 	const initialValues: InitialValues = {
 		title: dialogData?.title ?? "",
 		description: dialogData?.description ?? "",
-		dueDate: dialogData?.dueDate ?? formatedDate,
+		dueDate: dialogData?.dueDate ?? today,
 	};
 	const minDate = dialogData
-		? dialogData.dueDate.localeCompare(formatedDate) === 1
-			? formatedDate
+		? dialogData.dueDate.localeCompare(today) === 1
+			? today
 			: dialogData.dueDate
-		: formatedDate;
+		: today;
 
 	useEffect(() => {
 		const handleClickOutsideOfForm = (event: MouseEvent) => {
