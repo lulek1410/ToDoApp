@@ -1,5 +1,7 @@
 :root {
-	--shadow-color: hsla(0, 0%, 14%, 0.1);
+	--shadow-color: hsla(0, 0%, 14%, 0.84);
+	--button-c: #cc5803;
+	--card-c-light: #5bc0eb;
 
 	font-family: Poppins;
 	line-height: 1.5;

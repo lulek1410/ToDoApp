@@ -9,7 +9,7 @@
 }
 
 .btn {
-	background-color: #cc5803;
+	background-color: var(--button-c);
 	border: none;
 	box-shadow: 4px 4px var(--shadow-color);
 	cursor: pointer;
