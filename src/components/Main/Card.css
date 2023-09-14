@@ -1,11 +1,26 @@
 .card {
+	--overdue-color: rgb(255, 100, 100);
+	--card-c: #5bc0eb;
+	--card-c-light: #c0cbf1;
+
 	width: 100%;
 	height: 100%;
-	padding: 1.5rem 1rem 1rem 1rem;
-	background-color: #5bc0eb;
+	padding: 0.5rem 1rem 1rem 1rem;
+	background: linear-gradient(70deg, var(--card-c) 30%, var(--card-c-light));
 	border-radius: 10px;
 	box-shadow: 10px 10px var(--shadow-color);
 	position: relative;
+}
+
+.overdue {
+	background: linear-gradient(70deg, var(--card-c) 30%, var(--overdue-color))
+		var(--card-c-light);
+}
+
+.overdue-info {
+	text-align: end;
+	margin-bottom: 5px;
+	font-size: 0.8rem;
 }
 
 .card-title {
@@ -14,6 +29,13 @@
 	justify-content: space-between;
 	border-bottom: 1px rgb(50, 50, 50) solid;
 	margin-bottom: 0.5rem;
+	margin-top: -5px;
+}
+
+.card-toolbar {
+	display: flex;
+	gap: 10px;
+	justify-content: end;
 }
 
 .icon-btn {
@@ -22,15 +44,16 @@
 	background-color: transparent;
 	border: none;
 	cursor: pointer;
-	position: absolute;
+	/* margin-top: -2rem; */
+	/* position: absolute; */
 }
 
 .icon-btn:nth-child(1) {
-	right: 40px;
-	top: 7px;
+	/* right: 40px; */
+	/* top: 7px; */
 }
 
 .icon-btn:nth-child(2) {
-	right: 10px;
-	top: 7px;
+	/* right: 10px; */
+	/* top: 7px; */
 }
