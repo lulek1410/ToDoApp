@@ -6,9 +6,10 @@ import TaskCreateDialog from "./TaskCreateDialog";
 import { useAppDispatch } from "./../../../hooks/useAppDispatch";
 import { openDialog } from "./../../../store/reducers/dialogSlice";
 import { AnimatePresence } from "framer-motion";
+import useFilteredTasks from "../../../hooks/useFilteredTasks";
 
 const TasksList = () => {
-	const tasks = useAppSelector((state) => state.tasks);
+	const tasks = useFilteredTasks();
 	const isOpen = useAppSelector((state) => state.dialog.isOpen);
 	const dispatch = useAppDispatch();
 
