@@ -1,9 +1,9 @@
 import "./Card.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
-import { useAppDispatch } from "../../hooks/useAppDispatch";
-import { deleteTask } from "../../store/reducers/tasksSlice";
-import { openDialog } from "../../store/reducers/dialogSlice";
+import { useAppDispatch } from "./../../../hooks/useAppDispatch";
+import { deleteTask } from "./../../../store/reducers/tasksSlice";
+import { openDialog } from "./../../../store/reducers/dialogSlice";
 import { getCurrentDate } from "./utils/getCurrentDate";
 import { getDatesDiffInDays } from "./utils/getDatesDiffInDays";
 

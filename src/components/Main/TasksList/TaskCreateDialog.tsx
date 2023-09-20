@@ -3,10 +3,10 @@ import { useEffect, useRef } from "react";
 
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
-import { useAppDispatch } from "../../hooks/useAppDispatch";
-import { addTask, editTask } from "../../store/reducers/tasksSlice";
-import { useAppSelector } from "../../hooks/useAppSelector";
-import { closeDialog } from "../../store/reducers/dialogSlice";
+import { useAppDispatch } from "./../../../hooks/useAppDispatch";
+import { addTask, editTask } from "./../../../store/reducers/tasksSlice";
+import { useAppSelector } from "./../../../hooks/useAppSelector";
+import { closeDialog } from "./../../../store/reducers/dialogSlice";
 import { motion } from "framer-motion";
 import { getCurrentDate } from "./utils/getCurrentDate";
 

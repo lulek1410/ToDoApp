@@ -1,13 +1,12 @@
-import React from "react";
 import "./App.css";
 import Header from "./Header";
-import TasksList from "./components/Main/TasksList";
+import MainView from "./components/Main/MainView";
 
 function App() {
 	return (
 		<>
 			<Header />
-			<TasksList />
+			<MainView />
 		</>
 	);
 }

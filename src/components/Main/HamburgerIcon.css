@@ -1,0 +1,30 @@
+#hamburger {
+	fill: #232323;
+}
+
+#hamburger-container {
+	cursor: pointer;
+}
+
+:is(#bar-1, #bar-2) {
+	transition: transform 400ms ease-in-out;
+	transform-origin: center;
+}
+
+#bar-3 {
+	transition: opacity 400ms ease-in-out;
+}
+
+.active {
+	#bar-1 {
+		transform: rotate(-45deg) translateY(40%);
+	}
+
+	#bar-2 {
+		transform: rotate(45deg) translateY(-40%);
+	}
+
+	#bar-3 {
+		opacity: 0;
+	}
+}

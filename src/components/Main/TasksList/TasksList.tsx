@@ -1,11 +1,11 @@
 import "./TasksList.css";
 import Card from "./Card";
 import ToolBar from "./Toolbar";
-import { useAppSelector } from "../../hooks/useAppSelector";
+import { useAppSelector } from "./../../../hooks/useAppSelector";
 import TaskCreateDialog from "./TaskCreateDialog";
-import { useAppDispatch } from "../../hooks/useAppDispatch";
-import { openDialog } from "../../store/reducers/dialogSlice";
-import { AnimatePresence, motion } from "framer-motion";
+import { useAppDispatch } from "./../../../hooks/useAppDispatch";
+import { openDialog } from "./../../../store/reducers/dialogSlice";
+import { AnimatePresence } from "framer-motion";
 
 const TasksList = () => {
 	const tasks = useAppSelector((state) => state.tasks);
@@ -13,7 +13,7 @@ const TasksList = () => {
 	const dispatch = useAppDispatch();
 
 	return (
-		<main>
+		<section>
 			<ToolBar
 				openDialog={() => {
 					dispatch(openDialog());
@@ -31,7 +31,7 @@ const TasksList = () => {
 				))}
 			</div>
 			<AnimatePresence>{isOpen && <TaskCreateDialog />}</AnimatePresence>
-		</main>
+		</section>
 	);
 };
 
