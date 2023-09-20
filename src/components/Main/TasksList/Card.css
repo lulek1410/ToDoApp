@@ -44,16 +44,4 @@
 	background-color: transparent;
 	border: none;
 	cursor: pointer;
-	/* margin-top: -2rem; */
-	/* position: absolute; */
-}
-
-.icon-btn:nth-child(1) {
-	/* right: 40px; */
-	/* top: 7px; */
-}
-
-.icon-btn:nth-child(2) {
-	/* right: 10px; */
-	/* top: 7px; */
 }

@@ -12,7 +12,6 @@ const HamburgerIcon = () => {
 			id="hamburger-container"
 			className={active ? "active" : ""}
 			onClick={() => {
-        console.log("aaa");
 				dispatch(toggleAsideMenu());
 			}}
 		>

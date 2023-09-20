@@ -23,8 +23,6 @@ const Card = (props: CardProps) => {
 	const overdueInfo =
 		"Overdue by: " + overdueDays + (overdueDays > 1 ? " days" : " day");
 
-	console.log(overdueDays);
-
 	return (
 		<div className={"card" + (overdue ? " overdue" : "")}>
 			<div className="card-toolbar">
