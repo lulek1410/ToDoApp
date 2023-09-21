@@ -8,7 +8,7 @@ import { addTask, editTask } from "./../../../store/reducers/tasksSlice";
 import { useAppSelector } from "./../../../hooks/useAppSelector";
 import { closeDialog } from "./../../../store/reducers/dialogSlice";
 import { motion } from "framer-motion";
-import { getCurrentDate } from "./utils/getCurrentDate";
+import { getCurrentDate } from "../../../utils/getCurrentDate";
 
 interface InitialValues {
 	title: string;
@@ -54,8 +54,22 @@ const TaskCreateDialog = () => {
 
 	const handleSubmit = (values: InitialValues) => {
 		dialogData?.id
-			? dispatch(editTask({ ...values, id: dialogData.id }))
-			: dispatch(addTask({ ...values, id: tasksLength + 1 }));
+			? dispatch(
+					editTask({
+						...values,
+						id: dialogData.id,
+						overdueDays: dialogData.overdueDays,
+						done: dialogData.done,
+					})
+			  )
+			: dispatch(
+					addTask({
+						...values,
+						id: tasksLength + 1,
+						overdueDays: 0,
+						done: false,
+					})
+			  );
 		dispatch(closeDialog());
 	};
 

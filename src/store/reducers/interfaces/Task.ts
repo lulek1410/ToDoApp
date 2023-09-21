@@ -3,6 +3,8 @@ interface Task {
 	title: string;
 	description: string;
 	dueDate: string;
+	done: boolean;
+	overdueDays: number;
 }
 
 export default Task;

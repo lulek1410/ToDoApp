@@ -4,27 +4,36 @@ import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useAppDispatch } from "./../../../hooks/useAppDispatch";
 import { deleteTask } from "./../../../store/reducers/tasksSlice";
 import { openDialog } from "./../../../store/reducers/dialogSlice";
-import { getCurrentDate } from "./utils/getCurrentDate";
-import { getDatesDiffInDays } from "./utils/getDatesDiffInDays";
 
 interface CardProps {
 	id: number;
 	title: string;
 	description: string;
 	dueDate: string;
+	overdueDays: number;
+	done: boolean;
 }
 
 const Card = (props: CardProps) => {
-	const { id, title, description, dueDate } = props;
+	const { id, title, description, dueDate, overdueDays, done } = props;
 	const dispatch = useAppDispatch();
-	const today = getCurrentDate();
-	const overdue = today.localeCompare(dueDate) === 1;
-	const overdueDays = getDatesDiffInDays(dueDate, today);
-	const overdueInfo =
-		"Overdue by: " + overdueDays + (overdueDays > 1 ? " days" : " day");
+	let overdue = false;
+	const overdueInfo = `Overdue by: ${overdueDays} ${
+		overdueDays > 1 ? "days" : "day"
+	}`;
+	const getStyle = () => {
+		let style = "card";
+		if (done) {
+			style += " done";
+		} else if (overdueDays > 0) {
+			style += " overdue";
+			overdue = true;
+		}
+		return style;
+	};
 
 	return (
-		<div className={"card" + (overdue ? " overdue" : "")}>
+		<div className={getStyle()}>
 			<div className="card-toolbar">
 				<button
 					className="icon-btn"
