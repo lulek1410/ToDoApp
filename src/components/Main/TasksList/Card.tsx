@@ -13,6 +13,7 @@ import {
 import { openDialog } from "./../../../store/reducers/dialogSlice";
 import { faSquareCheck } from "@fortawesome/free-regular-svg-icons";
 import FaIconButton from "./FaIconButton";
+import { motion } from "framer-motion";
 
 interface CardProps {
 	id: number;
@@ -42,7 +43,11 @@ const Card = (props: CardProps) => {
 	};
 
 	return (
-		<div className={getStyle()}>
+		<motion.div
+			className={getStyle()}
+			layout
+			transition={{ type: "spring", damping: 30, stiffness: 200 }}
+		>
 			<div className="card-toolbar">
 				<FaIconButton
 					icon={done ? faRotateRight : faSquareCheck}
@@ -69,7 +74,7 @@ const Card = (props: CardProps) => {
 			</div>
 			{overdue ? <p className="overdue-info">{overdueInfo}</p> : null}
 			<p>{description}</p>
-		</div>
+		</motion.div>
 	);
 };
 

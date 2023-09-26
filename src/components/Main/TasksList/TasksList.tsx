@@ -21,19 +21,17 @@ const TasksList = () => {
 				}}
 			/>
 			<div className="tasks-list">
-				{tasks.map(
-					({ id, title, description, dueDate, overdueDays, done }, index) => (
-						<Card
-							id={id}
-							key={index}
-							title={title}
-							description={description}
-							dueDate={dueDate}
-							overdueDays={overdueDays}
-							done={done}
-						/>
-					)
-				)}
+				{tasks.map(({ id, title, description, dueDate, overdueDays, done }) => (
+					<Card
+						id={id}
+						key={id}
+						title={title}
+						description={description}
+						dueDate={dueDate}
+						overdueDays={overdueDays}
+						done={done}
+					/>
+				))}
 			</div>
 			<AnimatePresence>{isOpen && <TaskCreateDialog />}</AnimatePresence>
 		</section>
