@@ -9,7 +9,7 @@ const AsideMenu = () => {
 
 	return (
 		<aside>
-			<ul className="optionsList">
+			<ul className="options-list">
 				{filters.map((option, index) => (
 					<Option key={index} name={option} selected={option === filter} />
 				))}

@@ -5,9 +5,9 @@
 }
 
 .hamburger-icon {
-	position: absolute;
+	position: fixed;
 	left: 15px;
-	top: 15px;
+	top: calc(var(--header-height) + 15px);
 	width: 40px;
 	z-index: 2;
 }
