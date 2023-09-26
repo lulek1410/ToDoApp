@@ -14,6 +14,7 @@ import { openDialog } from "./../../../store/reducers/dialogSlice";
 import { faSquareCheck } from "@fortawesome/free-regular-svg-icons";
 import FaIconButton from "./FaIconButton";
 import { motion } from "framer-motion";
+import { forwardRef } from "react";
 
 interface CardProps {
 	id: number;
@@ -24,7 +25,7 @@ interface CardProps {
 	done: boolean;
 }
 
-const Card = (props: CardProps) => {
+const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
 	const { id, title, description, dueDate, overdueDays, done } = props;
 	const dispatch = useAppDispatch();
 	let overdue = false;
@@ -47,6 +48,10 @@ const Card = (props: CardProps) => {
 			className={getStyle()}
 			layout
 			transition={{ type: "spring", damping: 30, stiffness: 200 }}
+			initial={{ opacity: 0, x: -1000 }}
+			animate={{ opacity: 1, x: 0 }}
+			exit={{ opacity: 0, x: 1000 }}
+			ref={ref}
 		>
 			<div className="card-toolbar">
 				<FaIconButton
@@ -76,6 +81,6 @@ const Card = (props: CardProps) => {
 			<p>{description}</p>
 		</motion.div>
 	);
-};
+});
 
 export default Card;

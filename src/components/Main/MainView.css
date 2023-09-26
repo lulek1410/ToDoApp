@@ -2,6 +2,7 @@
 	flex: 1;
 	display: flex;
 	position: relative;
+	overflow-x: hidden;
 }
 
 .hamburger-icon {
