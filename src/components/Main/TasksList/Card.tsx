@@ -1,9 +1,10 @@
 import "./Card.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useAppDispatch } from "./../../../hooks/useAppDispatch";
-import { deleteTask } from "./../../../store/reducers/tasksSlice";
+import { deleteTask, markAsDone } from "./../../../store/reducers/tasksSlice";
 import { openDialog } from "./../../../store/reducers/dialogSlice";
+import { faSquareCheck } from "@fortawesome/free-regular-svg-icons";
+import FaIconButton from "./FaIconButton";
 
 interface CardProps {
 	id: number;
@@ -35,22 +36,24 @@ const Card = (props: CardProps) => {
 	return (
 		<div className={getStyle()}>
 			<div className="card-toolbar">
-				<button
-					className="icon-btn"
+				<FaIconButton
+					icon={faSquareCheck}
+					onClick={() => {
+						dispatch(markAsDone(id));
+					}}
+				/>
+				<FaIconButton
+					icon={faPenToSquare}
 					onClick={() => {
 						dispatch(openDialog(props));
 					}}
-				>
-					<FontAwesomeIcon icon={faPenToSquare} />
-				</button>
-				<button
-					className="icon-btn"
+				/>
+				<FaIconButton
+					icon={faTrash}
 					onClick={() => {
 						dispatch(deleteTask(id));
 					}}
-				>
-					<FontAwesomeIcon icon={faTrash} />
-				</button>
+				/>
 			</div>
 			<div className="card-title">
 				<h2>{title}</h2>

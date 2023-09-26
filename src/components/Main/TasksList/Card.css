@@ -37,11 +37,3 @@
 	gap: 10px;
 	justify-content: end;
 }
-
-.icon-btn {
-	font-size: 1rem;
-	color: black;
-	background-color: transparent;
-	border: none;
-	cursor: pointer;
-}
