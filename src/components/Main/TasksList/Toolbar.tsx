@@ -1,5 +1,4 @@
 import "./Toolbar.css";
-import React from "react";
 
 interface TooBarProps {
 	openDialog: () => void;

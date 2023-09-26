@@ -47,7 +47,6 @@ export const tasksSlice = createSlice({
 		},
 		updateTasks: (state) => {
 			const today = getCurrentDate();
-			console.log("update");
 			state.map(
 				(task) => (task.overdueDays = getDatesDiffInDays(task.dueDate, today))
 			);
