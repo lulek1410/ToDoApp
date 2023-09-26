@@ -6,7 +6,13 @@ const useFilteredTasks = () => {
 
 	switch (filter) {
 		case "All": {
-			return tasks;
+			return [...tasks].sort((a, b) => {
+				if ((a.done && !b.done) || (a.overdueDays <= 0 && b.overdueDays > 0))
+					return 1;
+				if ((!a.done && b.done) || (a.overdueDays > 0 && b.overdueDays <= 0))
+					return -1;
+				return 0;
+			});
 			break;
 		}
 		case "To do": {
