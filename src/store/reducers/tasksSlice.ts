@@ -52,9 +52,17 @@ export const tasksSlice = createSlice({
 				(task) => (task.overdueDays = getDatesDiffInDays(task.dueDate, today))
 			);
 		},
+		markAsDone: (state, { payload }: PayloadAction<number>) => {
+			const index = state.findIndex((task) => task.id === payload);
+			state[index].done = true;
+		},
+		reopen: (state, { payload }: PayloadAction<number>) => {
+			const index = state.findIndex((task) => task.id === payload);
+			state[index].done = false;
+		},
 	},
 });
 
-export const { addTask, editTask, deleteTask, updateTasks } =
+export const { addTask, editTask, deleteTask, updateTasks, markAsDone, reopen } =
 	tasksSlice.actions;
 export default tasksSlice.reducer;

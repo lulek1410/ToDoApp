@@ -10,19 +10,15 @@ const useFilteredTasks = () => {
 			break;
 		}
 		case "To do": {
-			return tasks.filter(
-				(task) => task.overdueDays <= 0
-			);
+			return tasks.filter((task) => task.overdueDays <= 0 && !task.done);
 			break;
 		}
 		case "Overdue": {
-			return tasks.filter(
-				(task) => task.overdueDays > 0
-			);
+			return tasks.filter((task) => task.overdueDays > 0 && !task.done);
 			break;
 		}
 		case "Done": {
-			return tasks;
+			return tasks.filter((task) => task.done);
 			break;
 		}
 	}

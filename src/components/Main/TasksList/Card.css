@@ -1,5 +1,6 @@
 .card {
-	--overdue-color: rgb(255, 100, 100);
+	--overdue-color: #ff6464;
+	--done-color: #61d361;
 	--card-c: #5bc0eb;
 	--card-c-light: #c0cbf1;
 
@@ -13,8 +14,11 @@
 }
 
 .overdue {
-	background: linear-gradient(70deg, var(--card-c) 30%, var(--overdue-color))
-		var(--card-c-light);
+	background: linear-gradient(70deg, var(--card-c) 30%, var(--overdue-color));
+}
+
+.done {
+	background: linear-gradient(70deg, var(--card-c) 30%, var(--done-color));
 }
 
 .overdue-info {

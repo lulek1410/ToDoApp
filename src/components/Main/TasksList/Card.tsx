@@ -1,7 +1,15 @@
 import "./Card.css";
-import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import {
+	faTrash,
+	faPenToSquare,
+	faRotateRight,
+} from "@fortawesome/free-solid-svg-icons";
 import { useAppDispatch } from "./../../../hooks/useAppDispatch";
-import { deleteTask, markAsDone } from "./../../../store/reducers/tasksSlice";
+import {
+	deleteTask,
+	markAsDone,
+	reopen,
+} from "./../../../store/reducers/tasksSlice";
 import { openDialog } from "./../../../store/reducers/dialogSlice";
 import { faSquareCheck } from "@fortawesome/free-regular-svg-icons";
 import FaIconButton from "./FaIconButton";
@@ -37,9 +45,9 @@ const Card = (props: CardProps) => {
 		<div className={getStyle()}>
 			<div className="card-toolbar">
 				<FaIconButton
-					icon={faSquareCheck}
+					icon={done ? faRotateRight : faSquareCheck}
 					onClick={() => {
-						dispatch(markAsDone(id));
+						done ? dispatch(reopen(id)) : dispatch(markAsDone(id));
 					}}
 				/>
 				<FaIconButton
