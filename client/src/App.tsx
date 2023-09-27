@@ -1,13 +1,21 @@
+import axios from "axios";
 import "./App.css";
 import Header from "./Header";
 import MainView from "./components/Main/MainView";
 import { useAppDispatch } from "./hooks/useAppDispatch";
-import { updateTasks } from "./store/reducers/tasksSlice";
+import { loadTasks } from "./store/reducers/tasksSlice";
+import { useEffect } from "react";
 
 function App() {
 	const dispatch = useAppDispatch();
-	dispatch(updateTasks());
-
+	useEffect(() => {
+		axios
+			.get("http://localhost:5000/tasks")
+			.then((resp) => {
+				dispatch(loadTasks(resp.data));
+			})
+			.catch((_) => {});
+	}, []);
 	return (
 		<>
 			<Header />

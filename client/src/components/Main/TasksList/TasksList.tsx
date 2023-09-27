@@ -10,6 +10,7 @@ import useFilteredTasks from "../../../hooks/useFilteredTasks";
 
 const TasksList = () => {
 	const tasks = useFilteredTasks();
+	console.log("TasksList: ", tasks);
 	const isOpen = useAppSelector((state) => state.dialog.isOpen);
 	const dispatch = useAppDispatch();
 
