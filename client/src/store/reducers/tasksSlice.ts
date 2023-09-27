@@ -1,7 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import Task from "./interfaces/Task";
-import { getDatesDiffInDays } from "../../utils/getDatesDiffInDays";
-import { getCurrentDate } from "../../utils/getCurrentDate";
 
 const initialState: Array<Task> = [];
 
@@ -30,10 +28,6 @@ export const tasksSlice = createSlice({
 		},
 		loadTasks: (state, { payload }: PayloadAction<Array<Task>>) => {
 			payload.map((task) => state.push(task));
-			const today = getCurrentDate();
-			state.map(
-				(task) => (task.overdueDays = getDatesDiffInDays(task.dueDate, today))
-			);
 		},
 	},
 });
