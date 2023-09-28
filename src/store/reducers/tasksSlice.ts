@@ -1,32 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import Task from "./interfaces/Task";
 
-const initialState: Array<Task> = [
-	{
-		id: 1,
-		title: "Task-1",
-		description: "description",
-		dueDate: "2024-09-30",
-		done: false,
-		overdueDays: -369,
-	},
-	{
-		id: 2,
-		title: "Task-2",
-		description: "description 2",
-		dueDate: "2023-12-30",
-		done: false,
-		overdueDays: -94,
-	},
-	{
-		id: 3,
-		title: "Task-3",
-		description: "description 3",
-		dueDate: "2023-08-12",
-		done: false,
-		overdueDays: 46,
-	},
-];
+const initialState: Array<Task> = [];
 
 export const tasksSlice = createSlice({
 	name: "tasks",

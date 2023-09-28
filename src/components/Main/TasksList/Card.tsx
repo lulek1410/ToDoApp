@@ -47,10 +47,10 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
 		<motion.div
 			className={getStyle()}
 			layout
-			transition={{ type: "spring", damping: 30, stiffness: 200 }}
-			initial={{ opacity: 0, x: -1000 }}
+			transition={{ type: "spring", duration: 0.3, bounce: 0.2 }}
+			initial={{ opacity: 0, x: -500 }}
 			animate={{ opacity: 1, x: 0 }}
-			exit={{ opacity: 0, x: 1000 }}
+			exit={{ opacity: 0, x: 500 }}
 			ref={ref}
 		>
 			<div className="card-toolbar">

@@ -22,8 +22,9 @@
 }
 
 .overdue-info {
-	margin-bottom: 5px;
 	font-size: 0.8rem;
+	display: flex;
+	place-items: center;
 }
 
 .card-title {
@@ -43,7 +44,7 @@
 	justify-content: space-between;
 }
 
-@media (width < 370px) {
+@media (width < 420px) {
 	.due-date {
 		display: block;
 	}

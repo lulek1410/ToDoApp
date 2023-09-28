@@ -8,21 +8,18 @@ section {
 
 .tasks-list {
 	display: grid;
-	grid-auto-rows: 250px;
+	grid-auto-rows: auto;
 	row-gap: 30px;
 }
 
 .tasks-list-wrapper {
 	width: 50%;
+	transition: transform 400ms linear;
 }
 
 @media (width < 1700px) {
 	.tasks-list-wrapper {
 		width: 60%;
-	}
-
-	.tasks-list {
-		grid-auto-rows: 300px;
 	}
 }
 
@@ -30,40 +27,17 @@ section {
 	.tasks-list-wrapper {
 		width: 70%;
 	}
-
-	.tasks-list {
-		grid-auto-rows: 350px;
-	}
 }
 
 @media (width < 750px) {
 	.tasks-list-wrapper {
-		width: 80%;
-	}
-
-	.tasks-list {
-		grid-auto-rows: 400px;
-	}
-}
-
-@media (width < 560px) {
-	.tasks-list-wrapper {
 		width: 90%;
-	}
-
-	.tasks-list {
-		grid-auto-rows: 450px;
+		padding-left: 50px;
 	}
 }
 
-@media (width < 420px) {
-	.tasks-list {
-		grid-auto-rows: 500px;
-	}
-}
-
-@media (width < 370px) {
-	.tasks-list {
-		grid-auto-rows: 720px;
+@media (width < 450px) {
+	.aside-closed {
+		padding-left: 40px;
 	}
 }

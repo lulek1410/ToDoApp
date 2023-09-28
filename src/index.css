@@ -1,5 +1,6 @@
 :root {
 	--header-height: 4.5rem;
+	--bottom-padding: 4.5rem;
 	--shadow-color: hsla(0, 0%, 14%, 0.84);
 	--button-c: #cc5803;
 
@@ -36,4 +37,10 @@ body {
 
 ul {
 	list-style: none;
+}
+
+@media (width <= 375px) {
+	:root {
+		--header-height: 6.5rem;
+	}
 }

@@ -16,6 +16,5 @@ export const useSplitedTasks = () => {
 			open.push(task);
 		}
 	});
-
 	return { overdue: overdue, open: open, done: done };
 };

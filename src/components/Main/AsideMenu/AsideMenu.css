@@ -3,9 +3,18 @@ aside {
 	z-index: 1;
 	background-color: white;
 	width: 0;
+	margin-bottom: calc(var(--bottom-padding) * -1);
 }
 
 .options-list {
 	position: fixed;
 	top: calc(var(--header-height) + 85px);
+	width: 150px;
+}
+
+.mobile {
+	position: absolute;
+	inset: 0;
+	display: grid;
+	place-items: center;
 }

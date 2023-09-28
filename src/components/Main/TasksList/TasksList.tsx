@@ -9,7 +9,7 @@ import { AnimatePresence } from "framer-motion";
 import { useSplitedTasks } from "../../../hooks/useSplitedTasks";
 import Task from "../../../store/reducers/interfaces/Task";
 
-const renderCards = (cards: Array<Task>) => {
+const renderCards = (cards: Array<Task>, n: string) => {
 	return cards.map(({ id, title, description, dueDate, overdueDays, done }) => (
 		<Card
 			id={id}
@@ -28,7 +28,6 @@ const TasksList = () => {
 	const filter = useAppSelector((state) => state.aside.selectedFilter);
 	const isOpen = useAppSelector((state) => state.dialog.isOpen);
 	const dispatch = useAppDispatch();
-
 	return (
 		<section>
 			<div className="tasks-list-wrapper">
@@ -39,9 +38,11 @@ const TasksList = () => {
 				/>
 				<div className="tasks-list">
 					<AnimatePresence mode="popLayout">
-						{(filter === "All" || filter === "Overdue") && renderCards(overdue)}
-						{(filter === "All" || filter === "To do") && renderCards(open)}
-						{(filter === "All" || filter === "Done") && renderCards(done)}
+					{(filter === "All" || filter === "Overdue") &&
+						renderCards(overdue, "overdue")}
+					{(filter === "All" || filter === "To do") &&
+						renderCards(open, "open")}
+					{(filter === "All" || filter === "Done") && renderCards(done, "done")}
 					</AnimatePresence>
 				</div>
 				<AnimatePresence>{isOpen && <TaskCreateDialog />}</AnimatePresence>

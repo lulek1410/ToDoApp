@@ -1,15 +1,17 @@
 import { AnimationSequence, stagger, useAnimate } from "framer-motion";
 import { useEffect } from "react";
+import { useMediaQuery } from "react-responsive";
 
 export const useMenuAnimation = (isOpen: boolean) => {
 	const [scope, animate] = useAnimate();
+	const isMobile = useMediaQuery({ maxWidth: 600 });
 
 	useEffect(() => {
 		const menuAnimations = isOpen
 			? [
 					[
 						"aside",
-						{ width: "max(15%, 200px)" },
+						{ width: isMobile ? "100%" : "max(15%, 200px)" },
 						{ ease: [0.08, 0.65, 0.53, 0.96], duration: 0.3 },
 					],
 					[
@@ -17,7 +19,7 @@ export const useMenuAnimation = (isOpen: boolean) => {
 						{ transform: "scale(1)", opacity: 1, filter: "blur(0px)" },
 						{ delay: stagger(0.05), at: "-0.1" },
 					],
-				]
+			  ]
 			: [
 					[
 						"li",
@@ -29,7 +31,7 @@ export const useMenuAnimation = (isOpen: boolean) => {
 						{ width: "0" },
 						{ ease: [0.08, 0.65, 0.53, 0.96], duration: 0.3, at: "-0.2" },
 					],
-				];
+			  ];
 
 		animate([...(menuAnimations as AnimationSequence)]);
 	}, [animate, isOpen, scope]);
