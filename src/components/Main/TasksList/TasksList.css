@@ -7,8 +7,63 @@ section {
 }
 
 .tasks-list {
-	width: 50%;
 	display: grid;
 	grid-auto-rows: 250px;
 	row-gap: 30px;
+}
+
+.tasks-list-wrapper {
+	width: 50%;
+}
+
+@media (width < 1700px) {
+	.tasks-list-wrapper {
+		width: 60%;
+	}
+
+	.tasks-list {
+		grid-auto-rows: 300px;
+	}
+}
+
+@media (width < 1060px) {
+	.tasks-list-wrapper {
+		width: 70%;
+	}
+
+	.tasks-list {
+		grid-auto-rows: 350px;
+	}
+}
+
+@media (width < 750px) {
+	.tasks-list-wrapper {
+		width: 80%;
+	}
+
+	.tasks-list {
+		grid-auto-rows: 400px;
+	}
+}
+
+@media (width < 560px) {
+	.tasks-list-wrapper {
+		width: 90%;
+	}
+
+	.tasks-list {
+		grid-auto-rows: 450px;
+	}
+}
+
+@media (width < 420px) {
+	.tasks-list {
+		grid-auto-rows: 500px;
+	}
+}
+
+@media (width < 370px) {
+	.tasks-list {
+		grid-auto-rows: 720px;
+	}
 }

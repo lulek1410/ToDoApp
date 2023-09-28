@@ -31,19 +31,21 @@ const TasksList = () => {
 
 	return (
 		<section>
-			<ToolBar
-				openDialog={() => {
-					dispatch(openDialog());
-				}}
-			/>
-			<div className="tasks-list">
-				<AnimatePresence mode="popLayout">
-					{(filter === "All" || filter === "Overdue") && renderCards(overdue)}
-					{(filter === "All" || filter === "To do") && renderCards(open)}
-					{(filter === "All" || filter === "Done") && renderCards(done)}
-				</AnimatePresence>
+			<div className="tasks-list-wrapper">
+				<ToolBar
+					openDialog={() => {
+						dispatch(openDialog());
+					}}
+				/>
+				<div className="tasks-list">
+					<AnimatePresence mode="popLayout">
+						{(filter === "All" || filter === "Overdue") && renderCards(overdue)}
+						{(filter === "All" || filter === "To do") && renderCards(open)}
+						{(filter === "All" || filter === "Done") && renderCards(done)}
+					</AnimatePresence>
+				</div>
+				<AnimatePresence>{isOpen && <TaskCreateDialog />}</AnimatePresence>
 			</div>
-			<AnimatePresence>{isOpen && <TaskCreateDialog />}</AnimatePresence>
 		</section>
 	);
 };
