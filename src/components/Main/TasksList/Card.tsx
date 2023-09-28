@@ -14,7 +14,7 @@ import { openDialog } from "./../../../store/reducers/dialogSlice";
 import { faSquareCheck } from "@fortawesome/free-regular-svg-icons";
 import FaIconButton from "./FaIconButton";
 import { motion } from "framer-motion";
-import { forwardRef } from "react";
+import { forwardRef, useState } from "react";
 
 interface CardProps {
 	id: number;
@@ -50,7 +50,6 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
 			transition={{ type: "spring", duration: 0.3, bounce: 0.2 }}
 			initial={{ opacity: 0, x: -500 }}
 			animate={{ opacity: 1, x: 0 }}
-			exit={{ opacity: 0, x: 500 }}
 			ref={ref}
 		>
 			<div className="card-toolbar">
