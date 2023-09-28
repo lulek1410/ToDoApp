@@ -78,7 +78,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
 				<p>Due Date: {dueDate}</p>
 			</div>
 			{overdue ? <p className="overdue-info">{overdueInfo}</p> : null}
-			<p className="card-description">{description}</p>
+			<p>{description}</p>
 		</motion.div>
 	);
 });

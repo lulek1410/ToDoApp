@@ -18,7 +18,7 @@ interface InitialValues {
 
 const validationSchema = Yup.object().shape({
 	title: Yup.string().required("Required!"),
-	description: Yup.string().required("Required!"),
+	description: Yup.string().required("Required!").max(600),
 	dueDate: Yup.string().required("Required!"),
 });
 
@@ -102,6 +102,7 @@ const TaskCreateDialog = () => {
 								component="textarea"
 								rows="6"
 							></Field>
+							<div className="info max-char-count">* max char count: 600</div>
 							<div className="error">
 								{errors.description && touched.description
 									? errors.description

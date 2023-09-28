@@ -27,6 +27,10 @@ form :is(div):not(.info) {
 	text-align: center;
 }
 
+.max-char-count {
+	margin-top: 10px;
+}
+
 form label {
 	margin-top: 10px;
 }
