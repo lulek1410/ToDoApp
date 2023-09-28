@@ -1,0 +1,47 @@
+.card {
+	--overdue-color: #ff6464;
+	--done-color: #61d361;
+	--card-c: #5bc0eb;
+	--card-c-light: #c0cbf1;
+
+	width: 100%;
+	height: 100%;
+	padding: 0.5rem 1rem 1rem 1rem;
+	background: linear-gradient(70deg, var(--card-c) 30%, var(--card-c-light));
+	border-radius: 10px;
+	box-shadow: 10px 10px var(--shadow-color);
+	position: relative;
+}
+
+.overdue {
+	background: linear-gradient(70deg, var(--card-c) 30%, var(--overdue-color));
+}
+
+.done {
+	background: linear-gradient(70deg, var(--card-c) 30%, var(--done-color));
+}
+
+.overdue-info {
+	text-align: end;
+	margin-bottom: 5px;
+	font-size: 0.8rem;
+}
+
+.card-title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 1px rgb(50, 50, 50) solid;
+	margin-bottom: 0.5rem;
+	margin-top: -5px;
+}
+
+.card-toolbar {
+	display: flex;
+	gap: 10px;
+	justify-content: end;
+}
+
+.card-description {
+	
+}

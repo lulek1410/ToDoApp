@@ -1,0 +1,38 @@
+.option {
+	padding: 20px 0 20px 40px;
+	font-size: 1.4rem;
+	opacity: 0;
+
+}
+
+.text {
+	cursor: pointer;
+	position: relative;
+	display: inline-block;
+	color: rgb(100, 100, 100)
+}
+
+.text::before {
+	content: "";
+	position: absolute;
+	left: -15px;
+	top: 0;
+	width: 10px;
+	height: calc(100% + 2px);
+	transform-origin: top;
+	transform: scaleY(0.3);
+	transition: transform 150ms linear, border-radius 150ms linear;
+	border-radius: 50%;
+	background-color: var(--button-c);
+}
+
+.text:hover::before {
+	transform: scaleY(1);
+	border-radius: 5px;
+}
+
+.selected {
+	color: black;
+	font-weight: 900;
+	text-shadow: 0 0 1px black;
+}

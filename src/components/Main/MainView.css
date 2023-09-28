@@ -1,0 +1,14 @@
+.main-view {
+	flex: 1;
+	display: flex;
+	position: relative;
+	overflow-x: hidden;
+}
+
+.hamburger-icon {
+	position: fixed;
+	left: 15px;
+	top: calc(var(--header-height) + 15px);
+	width: 40px;
+	z-index: 2;
+}

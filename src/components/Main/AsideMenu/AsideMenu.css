@@ -1,0 +1,11 @@
+aside {
+	padding-top: 70px;
+	z-index: 1;
+	background-color: white;
+	width: 0;
+}
+
+.options-list {
+	position: fixed;
+	top: calc(var(--header-height) + 85px);
+}
