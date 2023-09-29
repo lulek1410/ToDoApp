@@ -17,5 +17,5 @@ app.get("*", (req, res) => {
 });
 var port = process.env.PORT || "5000";
 app.listen(5000, () => {
-    console.log("server listens ad 5000");
+    console.log(`server listens on ${port}`);
 });
