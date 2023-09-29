@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import Task from "./interfaces/Task";
+import { Task } from "./interfaces/Tasks";
 
 interface DialogState {
 	isOpen: boolean;

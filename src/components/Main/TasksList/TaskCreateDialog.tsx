@@ -25,7 +25,6 @@ const validationSchema = Yup.object().shape({
 const TaskCreateDialog = () => {
 	const dispatch = useAppDispatch();
 	const dialogData = useAppSelector((state) => state.dialog.dialogData);
-	const tasksLength = useAppSelector((state) => state.tasks.length);
 	const formRef = useRef<HTMLDivElement | null>(null);
 	const today = getCurrentDate();
 	const initialValues: InitialValues = {
@@ -64,7 +63,6 @@ const TaskCreateDialog = () => {
 			  )
 			: dispatch(
 					addTask({
-						id: tasksLength + 1,
 						...values,
 						overdueDays: 0,
 						done: false,
