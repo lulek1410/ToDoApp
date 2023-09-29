@@ -68,13 +68,21 @@ const setupTasksRouting = (app) => {
         }));
     });
     app.put("/tasks", (req, res) => {
-        fs_1.default.readFile("./data/tasks.json", "utf8", (err, data) => {
+        fs_1.default.readFile("./data/tasks.json", "utf8", (err, data) => __awaiter(void 0, void 0, void 0, function* () {
             if (err) {
-                throw err;
+                res.status(500).send("Error reading file");
+                return;
             }
-            const newData = req.body;
-            res.status(200).json("OK");
-        });
+            const jsonData = JSON.parse(data);
+            jsonData.tasks = req.body.data;
+            fs_1.default.writeFile("./data/tasks.json", JSON.stringify(jsonData, null, 2), "utf8", (err) => {
+                if (err) {
+                    res.status(500).send("Error writing to file");
+                    return;
+                }
+            });
+        }));
+        res.status(200).send("OK");
     });
 };
 exports.setupTasksRouting = setupTasksRouting;

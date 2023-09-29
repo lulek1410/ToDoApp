@@ -16,7 +16,7 @@ app.get("*", (req: Request, res: Response) => {
 	res.sendFile(path.resolve(__dirname, "front", "index.html"));
 });
 
-var port = 5000;
+var port = process.env.PORT || "5000";
 
 app.listen(5000, () => {
 	console.log("server listens ad 5000");

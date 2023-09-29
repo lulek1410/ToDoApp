@@ -15,7 +15,7 @@ app.use(express_1.default.static(path_1.default.join(__dirname, "front")));
 app.get("*", (req, res) => {
     res.sendFile(path_1.default.resolve(__dirname, "front", "index.html"));
 });
-var port = 5000;
+var port = process.env.PORT || "5000";
 app.listen(5000, () => {
     console.log("server listens ad 5000");
 });
