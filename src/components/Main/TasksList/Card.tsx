@@ -14,7 +14,7 @@ import { openDialog } from "./../../../store/reducers/dialogSlice";
 import { faSquareCheck } from "@fortawesome/free-regular-svg-icons";
 import FaIconButton from "./FaIconButton";
 import { motion } from "framer-motion";
-import { forwardRef, useState } from "react";
+import { forwardRef } from "react";
 
 interface CardProps {
 	id: number;
