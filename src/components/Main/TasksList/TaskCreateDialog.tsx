@@ -56,16 +56,16 @@ const TaskCreateDialog = () => {
 		dialogData?.id
 			? dispatch(
 					editTask({
-						...values,
 						id: dialogData.id,
+						...values,
 						overdueDays: dialogData.overdueDays,
 						done: dialogData.done,
 					})
 			  )
 			: dispatch(
 					addTask({
-						...values,
 						id: tasksLength + 1,
+						...values,
 						overdueDays: 0,
 						done: false,
 					})
