@@ -10,6 +10,8 @@ interface Task {
 	overdueDays: number;
 }
 
+type Tasks = Array<Task>;
+
 const getTodaysDate = () => {
 	const today = new Date();
 	const formatedDate =
@@ -21,7 +23,7 @@ const getTodaysDate = () => {
 	return formatedDate;
 };
 
-const refreshData = (tasks: Array<Task>) => {
+const refreshData = (tasks: Tasks) => {
 	return new Promise<void>((resolve, reject) => {
 		try {
 			const getDatesDiffInDays = (start: string, end: string) => {
@@ -72,13 +74,25 @@ export const setupTasksRouting = (app: Express) => {
 	});
 
 	app.put("/tasks", (req: Request, res: Response) => {
-		fs.readFile("./data/tasks.json", "utf8", (err: any, data: any) => {
+		fs.readFile("./data/tasks.json", "utf8", async (err: any, data: string) => {
 			if (err) {
-				throw err;
+				res.status(500).send("Error reading file");
+				return;
 			}
-			const newData = req.body;
-
-			res.status(200).json("OK");
+			const jsonData = JSON.parse(data);
+			jsonData.tasks = req.body.data;
+			fs.writeFile(
+				"./data/tasks.json",
+				JSON.stringify(jsonData, null, 2),
+				"utf8",
+				(err) => {
+					if (err) {
+						res.status(500).send("Error writing to file");
+						return;
+					}
+				}
+			);
 		});
+		res.status(200).send("OK");
 	});
 };
