@@ -1,12 +1,12 @@
-import Task from "../store/reducers/interfaces/Task";
+import { Tasks } from "../store/reducers/interfaces/Tasks";
 import { useAppSelector } from "./useAppSelector";
 
 export const useSplitedTasks = () => {
 	const tasks = useAppSelector((state) => state.tasks);
 
-	const done: Array<Task> = [];
-	const overdue: Array<Task> = [];
-	const open: Array<Task> = [];
+	const done: Tasks = [];
+	const overdue: Tasks = [];
+	const open: Tasks = [];
 	tasks.map((task) => {
 		if (task.done) {
 			done.push(task);

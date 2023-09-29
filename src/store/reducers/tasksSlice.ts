@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import Task from "./interfaces/Task";
+import { Tasks } from "./interfaces/Tasks";
 
 const initialState: Array<Task> = [];
 
@@ -26,7 +27,7 @@ export const tasksSlice = createSlice({
 			const index = state.findIndex((task) => task.id === payload);
 			state[index].done = false;
 		},
-		loadTasks: (state, { payload }: PayloadAction<Array<Task>>) => {
+		loadTasks: (state, { payload }: PayloadAction<Tasks>) => {
 			payload.map((task) => state.push(task));
 		},
 	},
