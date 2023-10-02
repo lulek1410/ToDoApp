@@ -54,22 +54,27 @@ const TaskCreateDialog = () => {
 	}, [dispatch]);
 
 	const handleSubmit = (values: InitialValues) => {
-		dialogData?.id
-			? dispatch(
-					editTask({
-						id: dialogData.id,
-						...values,
-						overdueDays: dialogData.overdueDays,
-						done: dialogData.done,
-					})
-			  )
-			: dispatch(
-					addTask({
-						...values,
-						overdueDays: 0,
-						done: false,
-					})
-			  );
+		if (dialogData?.id) {
+			const diffTime =
+				new Date(today).getTime() - new Date(values.dueDate).getTime();
+			const overdueDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
+			dispatch(
+				editTask({
+					id: dialogData.id,
+					...values,
+					overdueDays: overdueDays,
+					done: dialogData.done,
+				})
+			);
+		} else {
+			dispatch(
+				addTask({
+					...values,
+					overdueDays: 0,
+					done: false,
+				})
+			);
+		}
 		dispatch(closeDialog());
 	};
 
