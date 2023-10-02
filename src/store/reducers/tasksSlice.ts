@@ -43,7 +43,6 @@ export const tasksSlice = createSlice({
 			updateDb(state);
 		},
 		loadTasks: (state, { payload }: PayloadAction<Tasks>) => {
-			console.log(payload);
 			payload.map((task) => state.push(task));
 		},
 	},
