@@ -1,24 +1,17 @@
-import { useAppDispatch } from "../../../hooks/useAppDispatch";
-import { Filter, setFilter } from "../../../store/reducers/asideSlice";
 import "./Option.css";
 
 interface OptionProps {
 	name: string;
 	selected: boolean;
+	onClick: () => void;
 }
 
-const Option = ({ name, selected }: OptionProps) => {
-	const dispatch = useAppDispatch();
-
-	const handleClick = () => {
-		dispatch(setFilter(name as Filter));
-	};
-
+const Option = ({ name, selected, onClick }: OptionProps) => {
 	return (
 		<li className="option">
 			<div
 				className={"text" + (selected ? " selected" : "")}
-				onClick={handleClick}
+				onClick={onClick}
 			>
 				{name}
 			</div>
