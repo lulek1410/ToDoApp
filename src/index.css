@@ -3,17 +3,13 @@
 	--bottom-padding: 4.5rem;
 	--shadow-color: hsla(0, 0%, 14%, 0.84);
 	--button-c: #cc5803;
+	--bg-c: linear-gradient(to bottom, #f3bdc1 10%, #f7cacd 30% 70%, #f3bdc1 90%);
 
 	font-family: Poppins;
 	line-height: 1.5;
 	font-weight: 400;
 
-	background: linear-gradient(
-		to bottom,
-		#f3bdc1 10%,
-		#f7cacd 30% 70%,
-		#f3bdc1 90%
-	);
+	background: var(--bg-c);
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
@@ -29,6 +25,10 @@ p {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+}
+
+.no-scroll {
+	overflow: hidden;
 }
 
 body {

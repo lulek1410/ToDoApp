@@ -8,6 +8,7 @@ import { openDialog } from "./../../../store/reducers/dialogSlice";
 import { AnimatePresence } from "framer-motion";
 import { useSplitedTasks } from "../../../hooks/useSplitedTasks";
 import { Tasks } from "../../../store/reducers/interfaces/Tasks";
+import { useEffect } from "react";
 
 const renderCards = (cards: Tasks) => {
 	return cards.map(({ id, title, description, dueDate, overdueDays, done }) => (
@@ -28,6 +29,15 @@ const TasksList = () => {
 	const filter = useAppSelector((state) => state.aside.selectedFilter);
 	const isOpen = useAppSelector((state) => state.dialog.isOpen);
 	const dispatch = useAppDispatch();
+
+	useEffect(() => {
+		if (isOpen) {
+			document.body.classList.add("no-scroll");
+		} else {
+			document.body.classList.remove("no-scroll");
+		}
+	}, [isOpen]);
+
 	return (
 		<section>
 			<div className="tasks-list-wrapper">

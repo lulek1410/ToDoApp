@@ -9,6 +9,7 @@ import { useAppSelector } from "./../../../hooks/useAppSelector";
 import { closeDialog } from "./../../../store/reducers/dialogSlice";
 import { motion } from "framer-motion";
 import { getCurrentDate } from "../../../utils/getCurrentDate";
+import { useMediaQuery } from "react-responsive";
 
 interface InitialValues {
 	title: string;
@@ -21,6 +22,8 @@ const TaskCreateDialog = () => {
 	const dialogData = useAppSelector((state) => state.dialog.dialogData);
 	const formRef = useRef<HTMLDivElement | null>(null);
 	const today = getCurrentDate();
+	const isMobile = useMediaQuery({ maxWidth: 600 });
+
 	const initialValues: InitialValues = {
 		title: dialogData?.title ?? "",
 		description: dialogData?.description ?? "",
@@ -41,17 +44,22 @@ const TaskCreateDialog = () => {
 	});
 
 	useEffect(() => {
-		const handleClickOutsideOfForm = (event: MouseEvent) => {
-			if (formRef.current && !formRef.current.contains(event.target as Node)) {
-				dispatch(closeDialog());
-			}
-		};
+		if (!isMobile) {
+			const handleClickOutsideOfForm = (event: MouseEvent) => {
+				if (
+					formRef.current &&
+					!formRef.current.contains(event.target as Node)
+				) {
+					dispatch(closeDialog());
+				}
+			};
 
-		document.addEventListener("mousedown", handleClickOutsideOfForm);
-		return () => {
-			document.removeEventListener("mousedown", handleClickOutsideOfForm);
-		};
-	}, [dispatch]);
+			document.addEventListener("mousedown", handleClickOutsideOfForm);
+			return () => {
+				document.removeEventListener("mousedown", handleClickOutsideOfForm);
+			};
+		}
+	}, [dispatch, isMobile]);
 
 	const handleSubmit = (values: InitialValues) => {
 		if (dialogData?.id) {
@@ -83,9 +91,12 @@ const TaskCreateDialog = () => {
 			initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
 			animate={{ opacity: 1, backdropFilter: "blur(5px)" }}
 			exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
-			className="dialog"
+			className={"dialog" + (isMobile ? "-mobile" : "")}
 		>
-			<div className="form" ref={formRef}>
+			<div
+				className={"form-wrapper" + (isMobile ? "-mobile" : "")}
+				ref={formRef}
+			>
 				<Formik
 					initialValues={initialValues}
 					validationSchema={validationSchema}
@@ -93,6 +104,17 @@ const TaskCreateDialog = () => {
 				>
 					{({ errors, touched, isValid, dirty }) => (
 						<Form>
+							{isMobile && (
+								<button
+									className="close-btn"
+									type="button"
+									onClick={() => {
+										dispatch(closeDialog());
+									}}
+								>
+									x
+								</button>
+							)}
 							<h2 className="info">Add task</h2>
 							<div className="info">* All fields are required</div>
 							<label htmlFor="title">Title:</label>
