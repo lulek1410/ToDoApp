@@ -6,7 +6,7 @@ const initialState: Tasks = [];
 
 const updateDb = (data: Tasks) => {
 	axios
-		.put("http://localhost:5000/tasks", {
+		.put("https://todoapp-4po6.onrender.com/tasks", {
 			data: data,
 		})
 		.catch((error) => {

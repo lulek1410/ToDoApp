@@ -10,7 +10,7 @@ function App() {
 	const dispatch = useAppDispatch();
 	useEffect(() => {
 		axios
-			.get("http://localhost:5000/tasks")
+			.get("https://todoapp-4po6.onrender.com/tasks")
 			.then((resp) => {
 				dispatch(loadTasks(resp.data));
 			})
