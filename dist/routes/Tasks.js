@@ -38,7 +38,7 @@ const refreshData = (tasks) => {
                 tasks: tasks,
                 lastUpdate: today,
             };
-            fs_1.default.writeFileSync("./data/tasks.json", JSON.stringify(data), "utf8");
+            fs_1.default.writeFileSync("./data/tasks.json", JSON.stringify(data, null, 2), "utf8");
             resolve();
         }
         catch (error) {
