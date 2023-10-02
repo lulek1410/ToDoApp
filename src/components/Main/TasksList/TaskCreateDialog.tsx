@@ -16,12 +16,6 @@ interface InitialValues {
 	dueDate: string;
 }
 
-const validationSchema = Yup.object().shape({
-	title: Yup.string().required("Required!"),
-	description: Yup.string().required("Required!").max(600),
-	dueDate: Yup.string().required("Required!"),
-});
-
 const TaskCreateDialog = () => {
 	const dispatch = useAppDispatch();
 	const dialogData = useAppSelector((state) => state.dialog.dialogData);
@@ -37,6 +31,14 @@ const TaskCreateDialog = () => {
 			? today
 			: dialogData.dueDate
 		: today;
+
+	const validationSchema = Yup.object().shape({
+		title: Yup.string().required("Required!"),
+		description: Yup.string().required("Required!").max(600),
+		dueDate: Yup.date()
+			.min(minDate, `Date must be later than ${minDate}`)
+			.required("Required!"),
+	});
 
 	useEffect(() => {
 		const handleClickOutsideOfForm = (event: MouseEvent) => {
