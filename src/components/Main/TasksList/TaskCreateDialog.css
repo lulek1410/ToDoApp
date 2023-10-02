@@ -11,6 +11,7 @@
 	background-color: #f7cacd;
 	padding: 3rem;
 	border-radius: 10px;
+	width: clamp(350px, 30%, 900px);
 }
 
 form {
